@@ -1,0 +1,16 @@
+# Ignorar archivos de pruebas y copias de seguridad
+index_backup.html
+scratch_viewer.html
+test_images.html
+*_test.png
+*_test.jpg
+*.tmp
+*.temp
+
+# Editor y sistema operativo
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Ignorar node_modules por si en el futuro decides usar npm
+node_modules/

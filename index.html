@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulario interactivo · FLYN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #003849;
+    --accent: #16b3c4;
+    --yellow: #fcc80d;
+    --orange: #ff6b4a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Baloo 2', system-ui, sans-serif;
+    background: #fdf3df;
+    height: 100%;
+    margin: 0;
+    color: #003849;
+    overflow: hidden;
+  }
+
+  /* ---- The slide stage: fills the whole viewport for video-call sharing ---- */
+  .stage-wrap {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    container-type: size;
+    cursor: pointer;
+    user-select: none;
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .45s ease;
+    background: url('img/image22.png') no-repeat center center;
+    background-size: cover;
+    /* Fondo claro detrás del marco transparente (image22.png): antes se veía
+       el degradado oscuro del body por el centro transparente del PNG. */
+    background-color: #fdf3df;
+  }
+  .slide.active { opacity: 1; visibility: visible; }
+
+  /* Cover slide styles */
+  .slide.cover-slide {
+    background: url('img/image2.png') no-repeat center center;
+    background-size: cover;
+    background-color: var(--yellow);
+  }
+
+  .cover-dots {
+    position: absolute;
+    left: 24.04%;
+    top: 7.11%;
+    width: 51.90%;
+    height: 28.44%;
+    pointer-events: none;
+    z-index: 9;
+  }
+  .cover-dots img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .cover-logo {
+    position: absolute;
+    left: 23.34%;
+    top: 6.93%;
+    width: 52.89%;
+    height: 29.96%;
+    pointer-events: none;
+    z-index: 10;
+    filter: drop-shadow(0 6px 10px rgba(0, 56, 73, 0.3));
+    animation: floatLogo 4s ease-in-out infinite alternate;
+  }
+  .cover-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .cover-chars {
+    position: absolute;
+    left: 12.97%;
+    top: 38.04%;
+    width: 80.55%;
+    height: 53.47%;
+    pointer-events: none;
+    z-index: 8;
+    filter: drop-shadow(0 10px 15px rgba(0, 56, 73, 0.2));
+    transform-origin: bottom center;
+    animation: floatChars 5s ease-in-out infinite alternate;
+  }
+  .cover-chars img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* BIONIC Mind Logo Overlay */
+  .logo {
+    position: absolute;
+    left: 26.02%;
+    top: 0%;
+    width: 50.28%;
+    height: 29.09%;
+    pointer-events: none;
+    z-index: 10;
+    filter: drop-shadow(0 6px 10px rgba(0, 56, 73, 0.3));
+    animation: floatLogo 4s ease-in-out infinite alternate;
+  }
+  .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @keyframes floatLogo {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(3px) scale(1.02); }
+  }
+
+  @keyframes floatChars {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(4px) scale(1.01); }
+  }
+
+  .item { position: absolute; transition: transform .55s cubic-bezier(.175, .885, .32, 1.275), opacity .5s ease; }
+  /* Cada GIF se presenta como tarjeta blanca redondeada con sombra suave,
+     así su fondo blanco propio deja de verse como un recuadro duro. */
+  .item.gif {
+    opacity: 0;
+    transform: scale(.55) rotate(-6deg);
+    background: #fff;
+    border-radius: 4.5cqh;
+    overflow: hidden;
+    box-shadow: 0 0.8cqh 2.4cqh rgba(0, 40, 60, 0.28);
+  }
+  .item.word { opacity: 0; transform: translateY(18px) scale(.7); }
+  .item.show { opacity: 1; transform: none; }
+
+  .item.gif img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+  }
+  .item.gif.show { cursor: pointer; }
+  .item.gif.show:hover { transform: scale(1.04) rotate(0.5deg); }
+
+  .word { display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1.02; }
+  
+  /* Sobre el fondo claro las palabras van con relleno de color y halo blanco
+     (legibles sobre la crema y también si pisan una decoración amarilla). */
+  .word.en {
+    font-family: 'Pangolin', cursive;
+    font-weight: 700;
+    color: #003849;
+    font-size: 4.8cqh;
+    text-shadow:
+      -2px -2px 0 #fff,
+       2px -2px 0 #fff,
+      -2px  2px 0 #fff,
+       2px  2px 0 #fff,
+      -2px  0px 0 #fff,
+       2px  0px 0 #fff,
+       0px -2px 0 #fff,
+       0px  2px 0 #fff,
+       0px  4px 6px rgba(0, 40, 60, 0.22);
+    letter-spacing: 0.5px;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .word.es {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    color: #ef5a2a;
+    font-size: 3.8cqh;
+    text-shadow:
+      -2px -2px 0 #fff,
+       2px -2px 0 #fff,
+      -2px  2px 0 #fff,
+       2px  2px 0 #fff,
+      -2px  0px 0 #fff,
+       2px  0px 0 #fff,
+       0px -2px 0 #fff,
+       0px  2px 0 #fff,
+       0px  5px 6px rgba(0, 40, 60, 0.18);
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .word.clickable { cursor: pointer; }
+  .word.clickable:hover { transform: scale(1.12) rotate(-1deg); }
+  .word.en.clickable:hover { color: #ef5a2a; }
+  .word.es.clickable:hover { color: #003849; }
+  
+  .word.speaking {
+    animation: pop 0.45s cubic-bezier(.175, .885, .32, 1.275);
+  }
+  
+  @keyframes pop {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.22) rotate(3deg); }
+    60% { transform: scale(0.95) rotate(-2deg); }
+    100% { transform: scale(1); }
+  }
+
+  .decor { position: absolute; opacity: 0; transition: opacity .6s ease .2s; }
+  .decor.show { opacity: 1; }
+  .decor img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    filter: drop-shadow(0 8px 10px rgba(0, 56, 73, 0.25));
+  }
+
+  /* ---- Image slide: a full-bleed flattened image + crisp text overlays ---- */
+  .slide.image-slide { background: #f4c400; }   /* fills the side margins on wide windows */
+  /* The image lives on a canvas that FITS inside the viewport (whole image always
+     visible — never cropped) and is locked to the image aspect. Text is positioned
+     in % of this canvas, so it tracks the image exactly (no drift/overlap on any
+     window shape). Any leftover margin shows the solid yellow above (not blurred). */
+  .info-canvas {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(100vw, calc(100vh * 1080 / 639));
+    aspect-ratio: 1080 / 639;
+    background: var(--info-bg) center / 100% 100% no-repeat;
+    container-type: size;
+  }
+  .info-text {
+    position: absolute;
+    transform: translate(-50%, 1.4cqh);   /* x = horizontal centre; starts shifted down */
+    opacity: 0;
+    font-family: Arial, 'Segoe UI', system-ui, sans-serif;
+    font-weight: 700;
+    color: #20292e;
+    text-align: center;
+    line-height: 1.12;
+    font-size: 3.2cqh;
+    white-space: pre;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    transition: opacity .5s ease, transform .5s cubic-bezier(.175,.885,.32,1.275);
+  }
+  .info-text.show {                        /* revealed one by one */
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  /* ---- Discreet floating controls (faint until hovered) ---- */
+  .controls {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 40, 50, 0.5);
+    backdrop-filter: blur(12px);
+    padding: 7px 16px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    opacity: 0.14;
+    transition: opacity 0.3s ease;
+  }
+  .controls:hover { opacity: 1; }
+  
+  button {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: 13.5px;
+    color: #fff;
+    background: var(--orange);
+    border: 2px solid var(--teal);
+    border-radius: 20px;
+    padding: 6px 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--teal);
+    transition: all 0.12s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+  }
+  
+  button:hover {
+    background: #ff856a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--teal);
+  }
+  
+  button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--teal);
+  }
+  
+  button:disabled {
+    background: #5b7b84;
+    border-color: #3b535b;
+    color: #8fa8af;
+    box-shadow: 0 4px 0 #3b535b;
+    cursor: default;
+    transform: none !important;
+    opacity: 0.5;
+  }
+
+  #prev, #next {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 14px;
+  }
+
+  #reveal {
+    background: #2ec4b6;
+  }
+  #reveal:hover {
+    background: #3fd3c5;
+  }
+
+  #reset {
+    background: #3a86c8;
+  }
+  #reset:hover {
+    background: #4f9be0;
+  }
+
+  .dots { display: flex; gap: 8px; margin: 0 10px; }
+  
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #bcd3d9;
+    border: 2px solid var(--teal);
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 0 var(--teal);
+  }
+  
+  .dot.active {
+    background: var(--yellow);
+    transform: scale(1.3);
+    box-shadow: 0 3px 0 var(--teal);
+  }
+  
+  .sep { width: 2px; height: 24px; background: rgba(255, 255, 255, 0.2); margin: 0 8px; }
+
+  /* Instructions stay hidden; appear as a help bubble when the controls are hovered */
+  .keyboard-tip {
+    position: fixed;
+    bottom: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 49;
+    font-size: 12.5px;
+    color: #003849;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 6px 16px rgba(0, 40, 60, 0.18);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .controls:hover ~ .keyboard-tip { opacity: 1; }
+  .keyboard-tip b {
+    color: #fff;
+    background: #16b3c4;
+    padding: 2px 7px;
+    border-radius: 6px;
+    font-weight: 800;
+  }
+
+  /* ---- Requisitos Slide Styles ---- */
+  .slide.requisitos-slide {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  .req-pattern {
+    position: absolute;
+    pointer-events: none;
+    z-index: 9;
+  }
+  .req-pattern img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    opacity: 0.18;
+    mix-blend-mode: multiply;
+  }
+  .req-cloud {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .req-cloud img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0.6cqh 1.2cqh rgba(0, 40, 60, 0.15));
+  }
+  .req-main-title {
+    position: absolute;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    color: #003849;
+    font-size: 3.8cqh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 11;
+    pointer-events: none;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  }
+  .req-flynn {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    filter: drop-shadow(0 0.8cqh 1.6cqh rgba(0, 40, 60, 0.25));
+    animation: floatFlynn 4s ease-in-out infinite alternate;
+  }
+  .req-flynn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  @keyframes floatFlynn {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(0.8cqh); }
+  }
+  .req-item {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.65) translateY(3cqh);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.175, .885, .32, 1.275);
+  }
+  .req-item.show {
+    opacity: 1;
+    transform: none;
+  }
+  .req-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .req-item.circle {
+    z-index: 10;
+    filter: drop-shadow(0 0.6cqh 1.2cqh rgba(0, 40, 60, 0.2));
+  }
+  .req-item.banner {
+    z-index: 12;
+    filter: drop-shadow(0 0.6cqh 1.2cqh rgba(0, 40, 60, 0.22));
+  }
+  .req-item.col-title {
+    z-index: 11;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    color: #003849;
+    font-size: 2.6cqh;
+    line-height: 1.15;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: pre-line;
+  }
+  .req-item.col-desc {
+    z-index: 13;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    color: #fff;
+    font-size: 1.9cqh;
+    line-height: 1.15;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: pre-line;
+    text-shadow: 0 0.1cqh 0.3cqh rgba(0, 40, 60, 0.4);
+  }
+
+  /* --- EDIT MODE CSS --- */
+  body.edit-mode-active .editable-element {
+    outline: 2px dashed red !important;
+    cursor: move !important;
+    pointer-events: auto !important;
+    z-index: 9999 !important;
+  }
+  body.edit-mode-active .editable-element:hover {
+    outline: 3px solid #ffaa00 !important;
+    background: rgba(255,255,0,0.2) !important;
+  }
+  #edit-mode-tip {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    z-index: 10000;
+    pointer-events: none;
+  }
+  body.edit-mode-active #edit-mode-tip {
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <div class="stage-wrap" id="stage" title="Haz clic para revelar"></div>
+
+  <div class="controls">
+    <button id="prev" title="Anterior">◀</button>
+    <div class="dots" id="dots"></div>
+    <button id="next" title="Siguiente">▶</button>
+    <span class="sep"></span>
+    <button id="reveal" title="Revelar siguiente (Espacio)">revelar</button>
+    <button id="reset" title="Reiniciar">reiniciar</button>
+  </div>
+
+  <div class="keyboard-tip">💡 Presiona <b>Espacio</b> para revelar · <b>Flechas</b> para navegar</div>
+
+<script>
+const SW=9144000, SH=5715000;
+const pX = v => (v/SW*100)+'%';
+const pY = v => (v/SH*100)+'%';
+
+// [x,y,w,h] in EMU. Faithful to the original slide coordinates.
+const SLIDES = [
+  {
+    "isCover": true
+  },
+  {
+    "groups": [
+      {
+        "en": "BALL",
+        "es": "Pelota",
+        "img": "image8.gif",
+        "i": [
+          647029,
+          458802,
+          1482900,
+          2983549
+        ],
+        "e": [
+          722951,
+          3907125,
+          1227000,
+          347400
+        ],
+        "s": [
+          521951,
+          4162349,
+          1629000,
+          640200
+        ]
+      },
+      {
+        "en": "CUP",
+        "es": "Taza",
+        "img": "image7.gif",
+        "i": [
+          2759305,
+          2142578,
+          1629001,
+          2886900
+        ],
+        "e": [
+          2991388,
+          513238,
+          1227000,
+          347400
+        ],
+        "s": [
+          2790389,
+          768474,
+          1629000,
+          640200
+        ]
+      },
+      {
+        "en": "DOOR",
+        "es": "Puerta",
+        "img": "image6.gif",
+        "i": [
+          4957948,
+          745350,
+          1629001,
+          2983549
+        ],
+        "e": [
+          5043712,
+          4697075,
+          1227000,
+          347400
+        ],
+        "s": [
+          4842712,
+          4952325,
+          1629000,
+          640200
+        ]
+      },
+      {
+        "en": "CAR",
+        "es": "Auto",
+        "img": "image5.gif",
+        "i": [
+          7131741,
+          1871689,
+          1629001,
+          2983549
+        ],
+        "e": [
+          7311901,
+          397950,
+          1227000,
+          347400
+        ],
+        "s": [
+          7110901,
+          745346,
+          1629000,
+          640200
+        ]
+      }
+    ],
+    "decor": null
+  },
+  {
+    "groups": [
+      {
+        "en": "BUGS",
+        "es": "Insectos",
+        "img": "image9.gif",
+        "i": [
+          171275,
+          781300,
+          1450854,
+          3391798
+        ],
+        "e": [
+          -13207,
+          4387363,
+          1819800,
+          448200
+        ],
+        "s": [
+          -13207,
+          4735105,
+          1819800,
+          987600
+        ]
+      },
+      {
+        "en": "APPLE",
+        "es": "Manzana",
+        "img": "image10.gif",
+        "i": [
+          2116638,
+          118225,
+          1450850,
+          3391800
+        ],
+        "e": [
+          1899420,
+          3510025,
+          1819800,
+          448200
+        ],
+        "s": [
+          1899420,
+          3857768,
+          1819800,
+          987600
+        ]
+      },
+      {
+        "en": "BOX",
+        "es": "Caja",
+        "img": "image11.gif",
+        "i": [
+          4770488,
+          332488,
+          1450851,
+          3291325
+        ],
+        "e": [
+          4453006,
+          3724913,
+          1819800,
+          448200
+        ],
+        "s": [
+          4453006,
+          4072655,
+          1819800,
+          987600
+        ]
+      },
+      {
+        "en": "PANTS",
+        "es": "Pantalones",
+        "img": "image12.gif",
+        "i": [
+          6829938,
+          282250,
+          1431225,
+          3391800
+        ],
+        "e": [
+          6635643,
+          3724913,
+          1819800,
+          448200
+        ],
+        "s": [
+          6635643,
+          4072655,
+          1819800,
+          987600
+        ]
+      }
+    ],
+    "decor": {
+      "img": "image13.png",
+      "p": [
+        8260000,
+        120000,
+        820000,
+        1200000
+      ]
+    }
+  },
+  {
+    "groups": [
+      {
+        "en": "COW",
+        "es": "Vaca",
+        "img": "image17.gif",
+        "i": [
+          2356175,
+          435016,
+          1760050,
+          2280434
+        ],
+        "e": [
+          1722975,
+          1566525,
+          2286000,
+          347400
+        ],
+        "s": [
+          1722975,
+          1924904,
+          2286000,
+          704100
+        ]
+      },
+      {
+        "en": "GLASSES",
+        "es": "Anteojos",
+        "img": "image16.gif",
+        "i": [
+          2570657,
+          3317407,
+          1401420,
+          2177800
+        ],
+        "e": [
+          1649800,
+          3429550,
+          2286000,
+          347400
+        ],
+        "s": [
+          1649800,
+          3787929,
+          2286000,
+          704100
+        ]
+      },
+      {
+        "en": "GARDEN",
+        "es": "Jardín",
+        "img": "image15.gif",
+        "i": [
+          6117225,
+          3291830,
+          1486075,
+          2101376
+        ],
+        "e": [
+          5131598,
+          3437666,
+          2286000,
+          347400
+        ],
+        "s": [
+          5131598,
+          3796046,
+          2286000,
+          704100
+        ]
+      },
+      {
+        "en": "MIRROR",
+        "es": "Espejo",
+        "img": "image14.gif",
+        "i": [
+          6117225,
+          516813,
+          1601550,
+          2177820
+        ],
+        "e": [
+          5131598,
+          1570705,
+          2286000,
+          347400
+        ],
+        "s": [
+          5131598,
+          1929084,
+          2286000,
+          704100
+        ]
+      }
+    ],
+    "decor": {
+      "img": "image18.png",
+      "p": [
+        8260000,
+        120000,
+        820000,
+        1200000
+      ]
+    }
+  },
+  {
+    "image": "image20_hd.png",
+    "texts": [
+      {
+        "t": "Mayor desarrollo\nestructural del\ncerebro",
+        "x": "42%",
+        "y": "21%"
+      },
+      {
+        "t": "Crece la mayor\ncantidad de neuronas",
+        "x": "87%",
+        "y": "52%"
+      },
+      {
+        "t": "1. Estimulación de excelencia\n2. Usar todo el cerebro",
+        "x": "43%",
+        "y": "84%"
+      }
+    ]
+  },
+  {
+    "isRequisitos": true,
+    "bg": "image2_test.png",
+    "pattern": {
+      "img": "image23.png",
+      "p": [
+        2657906,
+        209788,
+        3891634,
+        1426102
+      ]
+    },
+    "cloud": {
+      "img": "image24.png",
+      "p": [
+        2190201,
+        -610882,
+        4627934,
+        2745223
+      ]
+    },
+    "title": {
+      "t": "REQUISITOS",
+      "p": [
+        3537847,
+        366816,
+        1960748,
+        760501
+      ]
+    },
+    "flynn": {
+      "img": "image21.png",
+      "p": [
+        6885788,
+        1002747,
+        2449180,
+        3200000
+      ]
+    },
+    "columns": [
+      {
+        "circle": {
+          "img": "image25.png",
+          "p": [
+            370082,
+            1562464,
+            2066370,
+            2807157
+          ]
+        },
+        "title": {
+          "t": "TIEMPO HORA",
+          "p": [
+            423224,
+            2713888,
+            1914424,
+            590982
+          ]
+        },
+        "banner": {
+          "img": "image26.png",
+          "p": [
+            102731,
+            4142395,
+            2539819,
+            960349
+          ]
+        },
+        "desc": {
+          "t": "7 - 12 MESES\n3 VECES POR SEMANA",
+          "p": [
+            460656,
+            4252677,
+            1871164,
+            600001
+          ]
+        }
+      },
+      {
+        "circle": {
+          "img": "image25.png",
+          "p": [
+            2740570,
+            1706919,
+            1869573,
+            2673483
+          ]
+        },
+        "title": {
+          "t": "DECISIÓN CULTURAL\nY ECONÓMICA",
+          "p": [
+            2850824,
+            2499998,
+            1600000,
+            950000
+          ]
+        },
+        "banner": {
+          "img": "image26.png",
+          "p": [
+            2694123,
+            4133364,
+            1900004,
+            914617
+          ]
+        },
+        "desc": {
+          "t": "APOYO FAMILIAR",
+          "p": [
+            2816948,
+            4207536,
+            1737698,
+            674021
+          ]
+        }
+      },
+      {
+        "circle": {
+          "img": "image25.png",
+          "p": [
+            5097674,
+            1562464,
+            1699998,
+            2947517
+          ]
+        },
+        "title": {
+          "t": "G.A.L.A",
+          "p": [
+            5147682,
+            2631943,
+            1600000,
+            600000
+          ],
+          "color": "#16b3c4",
+          "size": "3600"
+        },
+        "banner": {
+          "img": "image26.png",
+          "p": [
+            4689747,
+            4187533,
+            2508217,
+            903256
+          ]
+        },
+        "desc": {
+          "t": "DECISIÓN INMEDIATA",
+          "p": [
+            5104367,
+            4297827,
+            1687287,
+            685931
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image27.png",
+    "texts": [
+      {
+        "t": "Lenguaje cómodo y entretenido",
+        "p": [
+          2225750,
+          4601974,
+          4776624,
+          685800
+        ],
+        "color": "#fff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "4.48cqh",
+        "shadow": "0px 2px 4px rgba(0,0,0,0.5)",
+        "weight": "800",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "FLYN",
+        "p": [
+          3764703,
+          -192847,
+          1828800,
+          685800
+        ],
+        "color": "#a43310",
+        "font": "'Baloo 2', sans-serif",
+        "size": "6cqh",
+        "weight": "800",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 1,
+    "bg": "image28.jpg",
+    "images": [
+      {
+        "img": "image29.png",
+        "p": [
+          4709556,
+          73602,
+          7168658,
+          5500002
+        ],
+        "reveal": true,
+        "revealGroup": 0,
+        "size": "5.22cqh"
+      }
+    ],
+    "texts": [
+      {
+        "t": "Values / Valores",
+        "p": [
+          463894,
+          4463659,
+          3830879,
+          685800
+        ],
+        "color": "#c00000",
+        "font": "'Baloo 2', sans-serif",
+        "size": "7.35cqh",
+        "weight": "800",
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image37.png",
+    "images": [
+      {
+        "img": "image38.png",
+        "p": [
+          500000,
+          1500000,
+          3500000,
+          3500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "img": "image49.png",
+        "p": [
+          4600000,
+          1000000,
+          3800000,
+          3500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 1: Amor",
+        "p": [
+          4559835,
+          277724,
+          3800000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5.5cqh",
+        "weight": "800",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "En este Modulo los niños aprenden a conocer su entorno y personas especiales a su alrededor como ser su núcleo familiar, el niño interactúa con juegos y dinámicas que le damos a conocer en el idioma inglés:\n\nConocer FLYN, aprender las partes de su cuerpo y cara como también a saber que es un niño especial y fantástico. El Proposito final es que se quiera y se valore a si mismo<div>\n<span style=\"font-weight: 800;\"><br></span></div>",
+        "p": [
+          4660240,
+          1331898,
+          3800000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "3.46cqh",
+        "align": "left",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image39.png",
+    "images": [
+      {
+        "img": "image40.png",
+        "p": [
+          200000,
+          1000000,
+          4000000,
+          4500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 2 : Amistad",
+        "p": [
+          5000000,
+          800000,
+          3500000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5cqh",
+        "weight": "800",
+        "bg": "#5a1344",
+        "radius": "4cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "Como su nombre lo dice, son actividades interactivas que normalmente tiene el niño con sus amigos, que son a esa edad en su gran mayoría juegos. Flynn  que es nuestro actor principal de la historia va a jugar con sus 5 amigos  más cercanos, de esa forma le enseñamos el alfabeto y nombres que el niño le sea fácil asociar todos los días.\n\nEjemplo: Todo asociado a saltar, correr, cantar, fiestas infantiles, animales o juegos de tecnología.",
+        "p": [
+          4500000,
+          1800000,
+          4300000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "3.2cqh",
+        "align": "left",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image41.png",
+    "images": [
+      {
+        "img": "image42.png",
+        "p": [
+          300000,
+          1000000,
+          3500000,
+          4500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 3 : Respeto",
+        "p": [
+          5000000,
+          800000,
+          3500000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5cqh",
+        "weight": "800",
+        "bg": "#ed811e",
+        "radius": "4cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "Este modulo muestra la importancia del respeto y conocer las diferentes labores que existen en el mundo como también que ellos aprendan a identificarlos para una correcta conversación\nEjemplo:\nMEDICO, POLICIA, CHEF, BOMBERO, PERIODISTA, ABOGADO, INGENIERO\nDistinguiendo con claridad los nombres y las diferencias de los trajes de estas profesiones.\n\nEl valor que logramos construir en este ambiente es el respetar a sus mayores, valorar el trabajo de sus padres y aprender a distinguir símbolos de autoridad.",
+        "p": [
+          4200000,
+          1800000,
+          4600000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "3.1cqh",
+        "align": "left",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image43.png",
+    "images": [
+      {
+        "img": "image33.png",
+        "p": [
+          500000,
+          1000000,
+          3500000,
+          4500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 4 : Solidaridad",
+        "p": [
+          5000000,
+          800000,
+          3500000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5cqh",
+        "weight": "800",
+        "bg": "#005a96",
+        "radius": "4cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "Existen aspectos en los niños que marcan su futuro e inicia por la solidaridad en casa, Flynn va a ser ejemplo de arreglar su cuarto, tender su cama, cuidar el jardín, reciclar, no dejar los juguetes tirados, ayudar a los más necesitados, cuidar el medio ambiente,\n\nEMBARAZADAS, DISCAPACITADOS, INVIDENTES\n\nSerán niños que tengan sensibilidad con el planeta y despierten ese liderazgo y vocación de ayudar.",
+        "p": [
+          4500000,
+          1800000,
+          4500000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "3cqh",
+        "align": "left",
+        "bg": "rgba(0, 30, 90, 0.45)",
+        "padding": "3cqh",
+        "radius": "2cqh",
+        "backdrop": "blur(5px)",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image43.png",
+    "images": [
+      {
+        "img": "image34.png",
+        "p": [
+          200000,
+          1000000,
+          4000000,
+          4500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 5 : Tolerancia",
+        "p": [
+          5000000,
+          800000,
+          3500000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5cqh",
+        "weight": "800",
+        "bg": "rgba(141, 62, 179, 0.7)",
+        "radius": "4cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "Como lo más seguro es que nuestros hijos se relacionen con personas de diferentes países y culturas, este ambiente lo hemos creado con el fin de ampliar sus habilidades de relaciones interpersonales con tolerancia y niños de Japón, Asia, Italia, Egipto etc.\n\nConociendo sobre la comida y cuentos relevantes para niños de esas culturas.\n\nAsí podrá por intermedio del ejemplo de FLYNN ser tolerante a niños con formas de ser distintas y cualidades físicas diferentes a las suyas.",
+        "p": [
+          4500000,
+          1800000,
+          4500000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "2.8cqh",
+        "align": "left",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image47.png",
+    "images": [
+      {
+        "img": "image35.png",
+        "p": [
+          200000,
+          1000000,
+          4000000,
+          4500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 6 : Honestidad",
+        "p": [
+          5000000,
+          800000,
+          3500000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5cqh",
+        "weight": "800",
+        "bg": "rgba(35, 60, 15, 0.7)",
+        "radius": "4cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "Buscar que los hijos digan la verdad desde niños y que sean amantes de los deportes, es un claro interés de cualquier papá moderno.\n\nAcá nos concentramos en que FLYNN les enseñe en varios ejemplos de la vida cotidiana a decir la verdad, le mostramos a los niños el equilibrio entre los deportes y que sepan controlar desde ya su atención a los videos juegos y redes sociales.\n\nAnclando el valor de la honestidad en las cosas pequeñas y en los retos futuros.",
+        "p": [
+          4800000,
+          1800000,
+          4000000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "2.8cqh",
+        "align": "left",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image49.png",
+    "images": [
+      {
+        "img": "image36.png",
+        "p": [
+          200000,
+          1000000,
+          4000000,
+          4500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 7 : Modales",
+        "p": [
+          5000000,
+          800000,
+          3500000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5cqh",
+        "weight": "800",
+        "bg": "rgba(235, 120, 20, 0.7)",
+        "radius": "4cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "No hay cosa que haga sentir más orgulloso a un papá, que sus hijos tengan buenos modales. Por eso le hemos dado mucha relevancia a este ambiente.\n\nFLYNN va a representar varios momentos en clase, en la casa, de compras con la familia (comer, poner los pies en la mesa, hacer pataleta, pedir el favor, dar las gracias, conversaciones de los mayores)\n\nAl final de este ambiente el niño va a obtener las habilidades sociales en el idioma ingles que le permitan hablar con niños de su edad nativos.",
+        "p": [
+          4800000,
+          1800000,
+          4000000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "2.8cqh",
+        "align": "left",
+        "bg": "rgba(180, 70, 10, 0.4)",
+        "padding": "3cqh",
+        "radius": "2cqh",
+        "backdrop": "blur(4px)",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 5,
+    "bg": "#fc9c0c",
+    "images": [
+      {
+        "img": "image52.png",
+        "p": [
+          5679930,
+          -908051,
+          4126742,
+          3257790
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "img": "image53.png",
+        "p": [
+          552076,
+          205683,
+          2000000,
+          2000000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "img": "image54.png",
+        "p": [
+          3090418,
+          3292744,
+          2680198,
+          2814203
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "<div style=\"color:#e31c1b; -webkit-text-stroke: 0.05em white; font-weight:900; font-size:1em; text-align:center; transform: rotate(-5deg); text-shadow: 0.05em 0.05em 0px rgba(0,0,0,0.3)\">BIONIC CAMP<br>VIRTUAL</div>",
+        "p": [
+          2800000,
+          300000,
+          4000000,
+          1500000
+        ],
+        "size": "7cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "<div style=\"text-align:center; border: 0.2em solid #ea5c13; background: #d0e4ff; border-radius: 50%; width: 100%; height: 100%; display:flex; flex-direction:column; justify-content:center; padding: 1em; box-sizing: border-box;\"><span style=\"color:#f25822;font-weight:bold;font-size:1em\">FLYNN<br>MEETING</span><span style=\"font-size:0.6em;color:#000;font-weight:bold;\">Es la introducción del niño y sus padres en nuestro modelo educativo, reconociendo las necesidades y expectativas de ambos.</span></div>",
+        "p": [
+          335081,
+          2134097,
+          2287472,
+          3038763
+        ],
+        "size": "4.42cqh",
+        "reveal": true,
+        "revealGroup": 1
+      },
+      {
+        "t": "<div style=\"text-align:center; border: 0.2em solid #ea5c13; background: #ffe6cc; border-radius: 50%; width: 100%; height: 100%; display:flex; flex-direction:column; justify-content:center; padding: 1em; box-sizing: border-box;\"><span style=\"color:#e94326;font-weight:bold;font-size:1em\">IBOND</span><span style=\"font-size:0.6em;color:#666;font-weight:bold\">Donde le van a enseñar a manejar el material</span></div>",
+        "p": [
+          3028459,
+          1633389,
+          2028139,
+          2540409
+        ],
+        "size": "5.59cqh",
+        "reveal": true,
+        "revealGroup": 2
+      },
+      {
+        "t": "<div style=\"text-align:center; border: 0.2em solid #f18c21; background: #e3ccf0; border-radius: 50%; width: 100%; height: 100%; display:flex; flex-direction:column; justify-content:center; padding: 1em; box-sizing: border-box;\"><span style=\"color:#e94326;font-weight:bold;font-size:1em\">FUN SPOT</span><span style=\"font-size:0.6em;color:#666;font-weight:bold\">Asesorías personalizadas con el TALENT COACH donde le enseñan los temas. Virtuales</span></div>",
+        "p": [
+          6000000,
+          1200000,
+          1792306,
+          2363130
+        ],
+        "size": "4.55cqh",
+        "reveal": true,
+        "revealGroup": 3
+      },
+      {
+        "t": "<div style=\"text-align:center; border: 0.2em solid #f18c21; background: #e5f0d3; border-radius: 50%; width: 100%; height: 100%; display:flex; flex-direction:column; justify-content:center; padding: 1em; box-sizing: border-box;\"><span style=\"color:#e94326;font-weight:bold;font-size:1em\">VALUES SHOW</span><span style=\"font-size:0.6em;color:#666;font-weight:bold\">Actividad al final, para demostrar habilidades obtenidas en el programa. Cantar, recitar</span></div>",
+        "p": [
+          7253160,
+          3138201,
+          1642034,
+          2132735
+        ],
+        "size": "3.52cqh",
+        "reveal": true,
+        "revealGroup": 4
+      },
+      {
+        "t": "<div style=\"text-align:center; border: 0.2em solid #f18c21; background: #ffe6cc; border-radius: 50%; width: 100%; height: 100%; display:flex; flex-direction:column; justify-content:center; padding: 1em; box-sizing: border-box;\"><span style=\"color:#e94326;font-weight:bold;font-size:1em\">H.A.V.A.</span><span style=\"font-size:0.6em;color:#666;font-weight:bold\">Evaluación que busca determinar el nivel de habilidades, avance y comprensión de los contenidos de cada libro</span></div>",
+        "p": [
+          4920550,
+          3328493,
+          1900836,
+          2499998
+        ],
+        "size": "4.01cqh",
+        "reveal": true,
+        "revealGroup": 4
+      },
+      {
+        "t": "<div style=\"text-align:center; background: #fce2a3; border-radius: 1em; padding: 0.3em 1em; box-shadow: 0 0.2em 0.2em rgba(0,0,0,0.2); width: 100%; height: 100%; box-sizing: border-box; display:flex; flex-direction:column; justify-content:center;\"><span style=\"color:#113b82; font-size:1em; font-weight:bold;\">HORARIOS<br>FIJOS</span><br><span style=\"color:red; font-size:1.3em; font-weight:bold\">3 veces<br>por semana</span><br><span style=\"color:#000; font-size:1em; font-weight:bold\">LUN - VIE</span></div>",
+        "p": [
+          1500000,
+          3000000,
+          2315252,
+          1999999
+        ],
+        "size": "3cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:1em; overflow:hidden; text-align:center; font-weight:bold; box-shadow: 0 0.2em 0.2em rgba(0,0,0,0.2); width: 100%; height: 100%; box-sizing: border-box; display:flex; flex-direction:column;\"><div style=\"background:#0a9ecb; color:white; padding:0.5em;\">MAÑANA L-V</div><div style=\"padding:0.5em; color:#333; display:flex; align-items:center; justify-content:center; flex:1;\">09:00 - 10:00<br>10:00 - 11:00</div></div>",
+        "p": [
+          200000,
+          4200000,
+          1500000,
+          1000000
+        ],
+        "size": "2.5cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:1em; overflow:hidden; text-align:center; font-weight:bold; box-shadow: 0 0.2em 0.2em rgba(0,0,0,0.2); width: 100%; height: 100%; box-sizing: border-box; display:flex; flex-direction:column;\"><div style=\"background:#0a9ecb; color:white; padding:0.5em;\">TARDE L-S</div><div style=\"padding:0.5em; color:#333; display:flex; align-items:center; justify-content:center; flex:1;\">15:00 - 16:00<br>16:00 - 17:00<br>17:00 - 18:00<br>18:00 - 19:00<br>19:00 - 20:00</div></div>",
+        "p": [
+          2000000,
+          4200000,
+          1500000,
+          1000000
+        ],
+        "size": "2.5cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "<div style=\"color:#113b82; font-weight:bold; font-size:1em; text-align:right;\"><span style=\"font-size:1.6em\">7</span> MESES DE ASESORIA<br><span style=\"font-size:1.6em\">+5</span> MESES DE<br>PRACTICA<br><span style=\"color:red;font-size:1.3em\">Total <span style=\"font-size:2em\">12</span> meses</span></div>",
+        "p": [
+          6500000,
+          4500000,
+          2500000,
+          1000000
+        ],
+        "size": "3cqh",
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ]
+  }
+];
+
+const stage = document.getElementById('stage');
+const dotsBox = document.getElementById('dots');
+let cur = 0;
+const revealed = SLIDES.map(()=>0);
+
+function place(el, box){ 
+  el.style.left=pX(box[0]); 
+  el.style.top=pY(box[1]); 
+  el.style.width=pX(box[2]); 
+  el.style.height=pY(box[3]); 
+  el._editBox = box;
+  el.classList.add('editable-element');
+}
+
+function speak(text){
+  if(!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=.85; u.pitch=1.05;
+  speechSynthesis.speak(u);
+}
+
+function buildSlide(slide, idx){
+  const sEl=document.createElement('div');
+  sEl.className='slide'; sEl.dataset.idx=idx;
+
+  if (slide.isCover) {
+    sEl.classList.add('cover-slide');
+
+    const dots = document.createElement('div');
+    dots.className = 'cover-dots';
+    const dotsImg = document.createElement('img');
+    dotsImg.src = 'img/image3.png';
+    dots.appendChild(dotsImg);
+    sEl.appendChild(dots);
+
+    const logo = document.createElement('div');
+    logo.className = 'cover-logo';
+    const logoImg = document.createElement('img');
+    logoImg.src = 'img/image4.png';
+    logoImg.alt = 'BIONIC mind';
+    logo.appendChild(logoImg);
+    sEl.appendChild(logo);
+
+    const chars = document.createElement('div');
+    chars.className = 'cover-chars';
+    const charsImg = document.createElement('img');
+    charsImg.src = 'img/image1.png';
+    charsImg.alt = 'BIONIC mind Characters';
+    chars.appendChild(charsImg);
+    sEl.appendChild(chars);
+
+    stage.appendChild(sEl);
+    return;
+  }
+
+  if (slide.image) {
+    sEl.classList.add('image-slide');
+    sEl.style.setProperty('--info-bg', `url('img/${slide.image}')`);
+    const canvas = document.createElement('div');
+    canvas.className = 'info-canvas';
+    (slide.texts || []).forEach((tx, i) => {
+      const t = document.createElement('div');
+      t.className = 'info-text';
+      t.dataset.group = i;            // revealed one by one, like vocab groups
+      t.style.left = tx.x;
+      t.style.top = tx.y;
+      if (tx.size) t.style.fontSize = tx.size;
+      t.textContent = tx.t;
+      canvas.appendChild(t);          // text lives on the image canvas (locked to it)
+    });
+    sEl.appendChild(canvas);
+    stage.appendChild(sEl);
+    return;
+  }
+
+  if (slide.isCustom) {
+    sEl.classList.add('custom-slide');
+    if (slide.bg) {
+      if (slide.bg.startsWith('#') || slide.bg.startsWith('rgba') || slide.bg.startsWith('rgb')) {
+        sEl.style.backgroundColor = slide.bg;
+      } else {
+        sEl.style.backgroundImage = `url('img/${slide.bg}')`;
+        sEl.style.backgroundSize = 'cover';
+        sEl.style.backgroundPosition = 'center center';
+        sEl.style.backgroundRepeat = 'no-repeat';
+      }
+    }
+    
+    (slide.images || []).forEach((imgObj, gi) => {
+      const d = document.createElement('div');
+      d.className = 'custom-item custom-img';
+      if (imgObj.reveal) {
+        d.classList.add('req-item');
+        d.dataset.group = imgObj.revealGroup || gi;
+      }
+      const im = document.createElement('img');
+      im.src = 'img/' + imgObj.img;
+      im.style.width = '100%';
+      im.style.height = '100%';
+      im.style.objectFit = imgObj.fit || 'contain';
+      d.appendChild(im);
+      place(d, imgObj.p);
+      d._editObj = imgObj;
+      d._deleteCallback = () => {
+        const idx = slide.images.indexOf(imgObj);
+        if (idx > -1) slide.images.splice(idx, 1);
+      };
+      sEl.appendChild(d);
+    });
+
+    (slide.texts || []).forEach((txtObj, gi) => {
+      const d = document.createElement('div');
+      d.className = 'custom-item custom-text';
+      if (txtObj.reveal) {
+        d.classList.add('req-item');
+        d.dataset.group = txtObj.revealGroup || gi;
+      }
+      d.innerHTML = txtObj.t;
+      d.style.position = 'absolute';
+      d.style.display = 'flex';
+      d.style.alignItems = txtObj.align === 'left' ? 'flex-start' : (txtObj.align === 'right' ? 'flex-end' : 'center');
+      d.style.justifyContent = txtObj.align === 'left' ? 'flex-start' : (txtObj.align === 'right' ? 'flex-end' : 'center');
+      d.style.textAlign = txtObj.align || 'center';
+      d.style.whiteSpace = 'pre-wrap';
+      
+      if (txtObj.color) d.style.color = txtObj.color;
+      if (txtObj.font) d.style.fontFamily = txtObj.font;
+      if (txtObj.size) d.style.fontSize = txtObj.size;
+      if (txtObj.shadow) d.style.textShadow = txtObj.shadow;
+      if (txtObj.weight) d.style.fontWeight = txtObj.weight;
+      if (txtObj.spacing) d.style.letterSpacing = txtObj.spacing;
+      if (txtObj.bg) d.style.backgroundColor = txtObj.bg;
+      if (txtObj.padding) d.style.padding = txtObj.padding;
+      if (txtObj.radius) d.style.borderRadius = txtObj.radius;
+      if (txtObj.backdrop) d.style.backdropFilter = txtObj.backdrop;
+      
+      place(d, txtObj.p);
+      d._editObj = txtObj;
+      d._deleteCallback = () => {
+        const idx = slide.texts.indexOf(txtObj);
+        if (idx > -1) slide.texts.splice(idx, 1);
+      };
+      sEl.appendChild(d);
+    });
+    
+    stage.appendChild(sEl);
+    return;
+  }
+
+  if (slide.isRequisitos) {
+    sEl.classList.add('requisitos-slide');
+    sEl.style.backgroundImage = `url('img/${slide.bg}')`;
+    
+    // 1. Pattern (decoración del título)
+    const pat = document.createElement('div');
+    pat.className = 'req-pattern';
+    const patImg = document.createElement('img');
+    patImg.src = 'img/' + slide.pattern.img;
+    pat.appendChild(patImg);
+    place(pat, slide.pattern.p);
+    sEl.appendChild(pat);
+    
+    // 2. Cloud (nube de fondo para el título)
+    const cld = document.createElement('div');
+    cld.className = 'req-cloud';
+    const cldImg = document.createElement('img');
+    cldImg.src = 'img/' + slide.cloud.img;
+    cld.appendChild(cldImg);
+    place(cld, slide.cloud.p);
+    sEl.appendChild(cld);
+    
+    // 3. Title text
+    const tit = document.createElement('div');
+    tit.className = 'req-main-title';
+    tit.textContent = slide.title.t;
+    place(tit, slide.title.p);
+    sEl.appendChild(tit);
+    
+    // 4. Flynn character waving
+    const fl = document.createElement('div');
+    fl.className = 'req-flynn';
+    const flImg = document.createElement('img');
+    flImg.src = 'img/' + slide.flynn.img;
+    fl.appendChild(flImg);
+    place(fl, slide.flynn.p);
+    sEl.appendChild(fl);
+    
+    // 5. Columns/Groups
+    slide.columns.forEach((col, gi) => {
+      // Circle
+      const circ = document.createElement('div');
+      circ.className = 'req-item circle';
+      circ.dataset.group = gi;
+      const circImg = document.createElement('img');
+      circImg.src = 'img/' + col.circle.img;
+      circ.appendChild(circImg);
+      place(circ, col.circle.p);
+      sEl.appendChild(circ);
+      
+      // Title inside circle
+      const colTit = document.createElement('div');
+      colTit.className = 'req-item col-title';
+      colTit.dataset.group = gi;
+      colTit.textContent = col.title.t;
+      if (col.title.color) colTit.style.color = col.title.color;
+      if (col.title.size) {
+        colTit.style.fontSize = (parseFloat(col.title.size) / 1000) * 1.35 + 'cqh';
+      }
+      place(colTit, col.title.p);
+      sEl.appendChild(colTit);
+      
+      // Blue banner
+      const ban = document.createElement('div');
+      ban.className = 'req-item banner';
+      ban.dataset.group = gi;
+      const banImg = document.createElement('img');
+      banImg.src = 'img/' + col.banner.img;
+      ban.appendChild(banImg);
+      place(ban, col.banner.p);
+      sEl.appendChild(ban);
+      
+      // Description inside blue banner
+      const desc = document.createElement('div');
+      desc.className = 'req-item col-desc';
+      desc.dataset.group = gi;
+      desc.textContent = col.desc.t;
+      place(desc, col.desc.p);
+      sEl.appendChild(desc);
+    });
+    
+    stage.appendChild(sEl);
+    return;
+  }
+
+  // El logo BIONIC central se quitó de las diapositivas de contenido porque
+  // se superponía con las tarjetas superiores. La marca queda en la portada
+  // y en la insignia del personaje en la esquina.
+
+  if(slide.decor){
+    const d=document.createElement('div'); d.className='decor';
+    const im=document.createElement('img'); im.src='img/'+slide.decor.img; im.alt='FLYN';
+    d.appendChild(im); place(d, slide.decor.p); sEl.appendChild(d);
+  }
+
+  slide.groups.forEach((g,gi)=>{
+    const gif=document.createElement('div');
+    gif.className='item gif'; gif.dataset.group=gi;
+    const im=document.createElement('img'); im.src='img/'+g.img; im.alt=g.en; im.loading='lazy';
+    gif.appendChild(im); place(gif,g.i); sEl.appendChild(gif);
+
+    const en=document.createElement('div');
+    en.className='item word en'; en.dataset.group=gi; en.textContent=g.en;
+    place(en,g.e); sEl.appendChild(en);
+
+    const es=document.createElement('div');
+    es.className='item word es'; es.dataset.group=gi; es.textContent=g.es;
+    place(es,g.s); sEl.appendChild(es);
+
+    const pron=ev=>{ if(!en.classList.contains('show'))return; ev.stopPropagation();
+      en.classList.remove('speaking'); void en.offsetWidth; en.classList.add('speaking'); speak(g.en); };
+    en.addEventListener('click',pron);
+    gif.addEventListener('click',pron);
+  });
+
+  stage.appendChild(sEl);
+}
+
+SLIDES.forEach(buildSlide);
+SLIDES.forEach((s,i)=>{ const b=document.createElement('button'); b.className='dot'; b.onclick=()=>goto(i); dotsBox.appendChild(b); });
+
+// How many "reveal steps" a slide has (vocab groups or infographic texts).
+function slideUnitCount(s){
+  if(s.isCover) return 0;
+  if(s.isCustom) return s.revealCount || 0;
+  if(s.groups)  return s.groups.length;
+  if(s.texts)   return s.texts.length;
+  if(s.isRequisitos) return s.columns.length;
+  return 0;
+}
+
+function applyReveal(){
+  const sEl=stage.querySelector(`.slide[data-idx="${cur}"]`);
+  const revealBtn = document.getElementById('reveal');
+  const resetBtn = document.getElementById('reset');
+  
+  if (SLIDES[cur].isCover) {
+    revealBtn.textContent = 'Empezar';
+    revealBtn.disabled = false;
+    resetBtn.disabled = true;
+    return;
+  }
+
+  revealBtn.textContent = 'revelar';
+  resetBtn.disabled = false;
+
+  const n=revealed[cur];
+  const total=slideUnitCount(SLIDES[cur]);
+  sEl.querySelectorAll('.item').forEach(el=>{
+    el.classList.toggle('show', (+el.dataset.group) < n);
+    el.style.cursor = ((+el.dataset.group) < n) ? 'pointer':'';
+  });
+  sEl.querySelectorAll('.info-text').forEach(el=> el.classList.toggle('show', (+el.dataset.group) < n));
+  sEl.querySelectorAll('.word').forEach(el=> el.classList.toggle('clickable',(+el.dataset.group)<n));
+  sEl.querySelectorAll('.req-item').forEach(el=> el.classList.toggle('show', (+el.dataset.group) < n));
+  const decor=sEl.querySelector('.decor'); if(decor) decor.classList.toggle('show', n>0);
+  revealBtn.disabled = n>=total;
+}
+
+function goto(i){
+  cur=(i+SLIDES.length)%SLIDES.length;
+  stage.querySelectorAll('.slide').forEach(s=>s.classList.toggle('active',+s.dataset.idx===cur));
+  dotsBox.querySelectorAll('.dot').forEach((d,di)=>d.classList.toggle('active',di===cur));
+  applyReveal();
+}
+
+function revealNext(){
+  if (SLIDES[cur].isCover) {
+    goto(cur + 1);
+    return;
+  }
+  const total=slideUnitCount(SLIDES[cur]);
+  if(revealed[cur]<total){ revealed[cur]++; applyReveal();
+    if(SLIDES[cur].groups) speak(SLIDES[cur].groups[revealed[cur]-1].en);
+  }
+}
+
+stage.addEventListener('click', e=>{
+  if(e.target.closest('.word.clickable')) return;
+  const gif=e.target.closest('.item.gif');
+  if(gif && gif.classList.contains('show')) return;
+  revealNext();
+});
+document.getElementById('reveal').onclick=revealNext;
+document.getElementById('next').onclick=()=>goto(cur+1);
+document.getElementById('prev').onclick=()=>goto(cur-1);
+document.getElementById('reset').onclick=()=>{ revealed[cur]=0; applyReveal(); };
+window.addEventListener('keydown',e=>{
+  if (e.target.isContentEditable) return; // Allow typing in edit mode
+  if(e.code==='Space'||e.code==='Enter'){e.preventDefault();revealNext();}
+  else if(e.code==='ArrowRight')goto(cur+1);
+  else if(e.code==='ArrowLeft')goto(cur-1);
+});
+
+goto(0);
+</script>
+
+<div id="edit-mode-tip">
+  <b>MODO EDICIÓN ACTIVO</b><br>
+  - Arrastra elementos para moverlos.<br>
+  - <b>Rueda del ratón:</b> Escalar ancho y alto.<br>
+  - <b>Shift + Rueda:</b> Escalar solo ancho.<br>
+  - <b>Alt + Rueda:</b> Escalar solo alto.<br>
+  - <b>Ctrl + Rueda:</b> Escalar tamaño de fuente.<br>
+  - <b>Doble Click:</b> Editar el texto.<br>
+  - <b>Suprimir / Retroceso:</b> Eliminar elemento bajo el cursor.<br>
+  - <b>Ctrl + Shift + S:</b> Copiar coordenadas al portapapeles.<br>
+  - <b>Ctrl + Shift + E:</b> Salir del modo edición.
+</div>
+
+<script>
+// --- EDIT MODE LOGIC ---
+(function(){
+  let isEditMode = false;
+  let activeEl = null, startX, startY, startLeft, startTop;
+  const W = 9144000, H = 5715000;
+  
+  window.addEventListener('keydown', e => {
+    // Toggle with Ctrl+Shift+E
+    if(e.ctrlKey && e.shiftKey && e.code === 'KeyE') {
+      e.preventDefault();
+      isEditMode = !isEditMode;
+      document.body.classList.toggle('edit-mode-active', isEditMode);
+    }
+    // Export with Ctrl+Shift+S
+    if(isEditMode && e.ctrlKey && e.shiftKey && e.code === 'KeyS') {
+      e.preventDefault();
+      const json = JSON.stringify(SLIDES, null, 2);
+      navigator.clipboard.writeText(json).then(() => {
+        alert('¡Coordenadas actualizadas copiadas al portapapeles! Pegalas en el chat.');
+      }).catch(err => {
+        console.error('Error copying text: ', err);
+        alert('No se pudo copiar. Revisa la consola.');
+      });
+      console.log("NUEVAS COORDENADAS:\n", json);
+    }
+  });
+
+  let hoveredEl = null;
+  window.addEventListener('mouseover', e => {
+    if(!isEditMode) return;
+    let target = e.target.closest('.editable-element');
+    hoveredEl = target || null;
+  });
+  window.addEventListener('mouseout', e => {
+    if(!isEditMode) return;
+    let target = e.target.closest('.editable-element');
+    if(target && hoveredEl === target) hoveredEl = null;
+  });
+
+  window.addEventListener('keydown', e => {
+    // Check if we are editing text so we don't accidentally delete the element while typing
+    if(e.target.isContentEditable) return;
+    
+    if(isEditMode && hoveredEl && (e.code === 'Backspace' || e.code === 'Delete')) {
+      e.preventDefault();
+      if(hoveredEl._deleteCallback) hoveredEl._deleteCallback();
+      hoveredEl.remove();
+      hoveredEl = null;
+    }
+  });
+
+  window.addEventListener('dblclick', e => {
+    if(!isEditMode) return;
+    let target = e.target.closest('.editable-element.custom-text');
+    if(!target || !target._editObj || typeof target._editObj.t === 'undefined') return;
+    
+    target.contentEditable = true;
+    target.style.cursor = 'text';
+    target.focus();
+    
+    const saveText = () => {
+      target.contentEditable = false;
+      target.style.cursor = 'move';
+      target._editObj.t = target.innerHTML;
+      target.removeEventListener('blur', saveText);
+    };
+    target.addEventListener('blur', saveText);
+  });
+
+  // Drag logic
+  window.addEventListener('mousedown', e => {
+    if(!isEditMode) return;
+    let target = e.target.closest('.editable-element');
+    if(!target || target.isContentEditable) return; // don't drag if editing text
+    activeEl = target;
+    startX = e.clientX; startY = e.clientY;
+    startLeft = parseFloat(activeEl.style.left) || 0;
+    startTop = parseFloat(activeEl.style.top) || 0;
+    e.preventDefault(); // prevent text selection
+  });
+  
+  window.addEventListener('mousemove', e => {
+    if(!activeEl || !isEditMode) return;
+    let dx = ((e.clientX - startX) / window.innerWidth) * 100;
+    let dy = ((e.clientY - startY) / window.innerHeight) * 100;
+    let newLeft = startLeft + dx;
+    let newTop = startTop + dy;
+    activeEl.style.left = newLeft + '%';
+    activeEl.style.top = newTop + '%';
+    
+    // Update the array in memory
+    if(activeEl._editBox) {
+      activeEl._editBox[0] = Math.round((newLeft / 100) * W);
+      activeEl._editBox[1] = Math.round((newTop / 100) * H);
+    }
+  });
+  
+  window.addEventListener('mouseup', () => activeEl = null);
+
+  // Resize logic
+  window.addEventListener('wheel', e => {
+    if(!isEditMode) return;
+    let target = e.target.closest('.editable-element');
+    if(!target) return;
+    e.preventDefault();
+    
+    let scale = e.deltaY < 0 ? 1.05 : 0.95;
+    
+    if (e.ctrlKey) {
+      let currentSize = parseFloat(target.style.fontSize) || 5;
+      let newSize = (currentSize * scale).toFixed(2);
+      target.style.fontSize = newSize + 'cqh';
+      if (target._editObj) target._editObj.size = newSize + 'cqh';
+      return;
+    }
+    
+    let curW = parseFloat(target.style.width) || 0;
+    let curH = parseFloat(target.style.height) || 0;
+    
+    if (e.shiftKey && !e.altKey) {
+      target.style.width = (curW * scale) + '%';
+    } else if (e.altKey && !e.shiftKey) {
+      target.style.height = (curH * scale) + '%';
+    } else {
+      target.style.width = (curW * scale) + '%';
+      target.style.height = (curH * scale) + '%';
+    }
+    
+    if(target._editBox) {
+      target._editBox[2] = Math.round((parseFloat(target.style.width) / 100) * W);
+      target._editBox[3] = Math.round((parseFloat(target.style.height) / 100) * H);
+    }
+  }, {passive: false});
+})();
+</script>
+
+</body>
+</html>
