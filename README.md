@@ -29,3 +29,14 @@ El proyecto proporciona un conjunto de diapositivas interactivas donde el usuari
 *   `img/`: Directorio con los recursos de imágenes y GIFs del vocabulario y del fondo.
 *   `CLAUDE.md`: Directrices de desarrollo y reglas de estilo para colaboradores e IAs.
 *   `CHANGELOG.md`: Historial de versiones y cambios introducidos en el proyecto.
+
+## 📝 Control de Versiones (Git)
+Este proyecto utiliza Git para llevar un historial limpio de los cambios. 
+
+**Regla importante:** Después de realizar cambios significativos en el código o en la configuración de las diapositivas (como exportar un nuevo JSON desde el modo de edición), asegúrate de guardar tu progreso creando un commit.
+
+Para hacer un commit, abre la terminal y ejecuta:
+```bash
+git add .
+git commit -m "Descripción breve y clara de los cambios que hiciste"
+```
