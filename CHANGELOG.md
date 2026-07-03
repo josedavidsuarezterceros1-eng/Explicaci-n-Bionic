@@ -2,6 +2,13 @@
 
 Todos los cambios notables en este proyecto serán documentados en este archivo de manera cronológica.
 
+## [1.3.1] - 2026-07-03
+
+### Changed
+*   Actualización completa de la estructura y coordenadas de la diapositiva final "BIONIC CAMP VIRTUAL" integrando el JSON exportado desde el modo de edición.
+*   Ajuste visual del título principal "BIONIC CAMP VIRTUAL" con fuente roja pura (`#ff0000`), trazo grueso blanco (`-webkit-text-stroke`), tipografía Comic Sans MS y sombra desplegable sutil para coincidir exactamente con el diseño oficial original de BIONIC mind.
+*   Corrección de un error lógico en JavaScript en la evaluación de grupos de aparición (`revealGroup !== undefined`) que impedía que los elementos con grupo `0` (horarios y duraciones) se mostraran en diapositivas personalizadas si estaban en índices mayores que la cantidad total de clics (`revealCount`).
+
 ## [1.3.0] - 2026-06-30
 
 ### Added
