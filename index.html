@@ -3222,6 +3222,14 @@ goto(0);
 
   console.log("[Cupo Widget] Ready. btn:", btnCheck, "input:", input);
 })();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('Service Worker registrado:', reg.scope))
+      .catch(err => console.log('Error registrando Service Worker:', err));
+  });
+}
 </script>
 </body>
 </html>
