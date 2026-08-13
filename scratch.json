@@ -1,0 +1,1620 @@
+[
+  {
+    "isCover": true
+  },
+  {
+    "groups": [
+      {
+        "en": "BALL",
+        "es": "Pelota",
+        "img": "image8.gif",
+        "i": [
+          647029,
+          458802,
+          1482900,
+          2983549
+        ],
+        "e": [
+          722951,
+          3907125,
+          1227000,
+          347400
+        ],
+        "s": [
+          521951,
+          4162349,
+          1629000,
+          640200
+        ]
+      },
+      {
+        "en": "CUP",
+        "es": "Taza",
+        "img": "image7.gif",
+        "i": [
+          2759305,
+          2142578,
+          1629001,
+          2886900
+        ],
+        "e": [
+          2991388,
+          513238,
+          1227000,
+          347400
+        ],
+        "s": [
+          2790389,
+          768474,
+          1629000,
+          640200
+        ]
+      },
+      {
+        "en": "DOOR",
+        "es": "Puerta",
+        "img": "image6.gif",
+        "i": [
+          4957948,
+          745350,
+          1629001,
+          2983549
+        ],
+        "e": [
+          5043712,
+          4697075,
+          1227000,
+          347400
+        ],
+        "s": [
+          4842712,
+          4952325,
+          1629000,
+          640200
+        ]
+      },
+      {
+        "en": "CAR",
+        "es": "Auto",
+        "img": "image5.gif",
+        "i": [
+          7131741,
+          1871689,
+          1629001,
+          2983549
+        ],
+        "e": [
+          7311901,
+          397950,
+          1227000,
+          347400
+        ],
+        "s": [
+          7110901,
+          745346,
+          1629000,
+          640200
+        ]
+      }
+    ],
+    "decor": null
+  },
+  {
+    "groups": [
+      {
+        "en": "BUGS",
+        "es": "Insectos",
+        "img": "image9.gif",
+        "i": [
+          171275,
+          781300,
+          1450854,
+          3391798
+        ],
+        "e": [
+          -13207,
+          4387363,
+          1819800,
+          448200
+        ],
+        "s": [
+          -13207,
+          4735105,
+          1819800,
+          987600
+        ]
+      },
+      {
+        "en": "APPLE",
+        "es": "Manzana",
+        "img": "image10.gif",
+        "i": [
+          2116638,
+          118225,
+          1450850,
+          3391800
+        ],
+        "e": [
+          1899420,
+          3510025,
+          1819800,
+          448200
+        ],
+        "s": [
+          1899420,
+          3857768,
+          1819800,
+          987600
+        ]
+      },
+      {
+        "en": "BOX",
+        "es": "Caja",
+        "img": "image11.gif",
+        "i": [
+          4770488,
+          332488,
+          1450851,
+          3291325
+        ],
+        "e": [
+          4453006,
+          3724913,
+          1819800,
+          448200
+        ],
+        "s": [
+          4453006,
+          4072655,
+          1819800,
+          987600
+        ]
+      },
+      {
+        "en": "PANTS",
+        "es": "Pantalones",
+        "img": "image12.gif",
+        "i": [
+          6829938,
+          282250,
+          1431225,
+          3391800
+        ],
+        "e": [
+          6635643,
+          3724913,
+          1819800,
+          448200
+        ],
+        "s": [
+          6635643,
+          4072655,
+          1819800,
+          987600
+        ]
+      }
+    ],
+    "decor": {
+      "img": "image13.png",
+      "p": [
+        8260000,
+        120000,
+        820000,
+        1200000
+      ]
+    }
+  },
+  {
+    "groups": [
+      {
+        "en": "COW",
+        "es": "Vaca",
+        "img": "image17.gif",
+        "i": [
+          2356175,
+          435016,
+          1760050,
+          2280434
+        ],
+        "e": [
+          1722975,
+          1566525,
+          2286000,
+          347400
+        ],
+        "s": [
+          1722975,
+          1924904,
+          2286000,
+          704100
+        ]
+      },
+      {
+        "en": "GLASSES",
+        "es": "Anteojos",
+        "img": "image16.gif",
+        "i": [
+          2570657,
+          3317407,
+          1401420,
+          2177800
+        ],
+        "e": [
+          1649800,
+          3429550,
+          2286000,
+          347400
+        ],
+        "s": [
+          1649800,
+          3787929,
+          2286000,
+          704100
+        ]
+      },
+      {
+        "en": "GARDEN",
+        "es": "Jardín",
+        "img": "image15.gif",
+        "i": [
+          6117225,
+          3291830,
+          1486075,
+          2101376
+        ],
+        "e": [
+          5131598,
+          3437666,
+          2286000,
+          347400
+        ],
+        "s": [
+          5131598,
+          3796046,
+          2286000,
+          704100
+        ]
+      },
+      {
+        "en": "MIRROR",
+        "es": "Espejo",
+        "img": "image14.gif",
+        "i": [
+          6117225,
+          516813,
+          1601550,
+          2177820
+        ],
+        "e": [
+          5131598,
+          1570705,
+          2286000,
+          347400
+        ],
+        "s": [
+          5131598,
+          1929084,
+          2286000,
+          704100
+        ]
+      }
+    ],
+    "decor": {
+      "img": "image18.png",
+      "p": [
+        8260000,
+        120000,
+        820000,
+        1200000
+      ]
+    }
+  },
+  {
+    "isCustom": true,
+    "revealCount": 3,
+    "bg": "image20_hd.png",
+    "texts": [
+      {
+        "t": "Mayor desarrollo\nestructural del\ncerebro",
+        "p": [
+          2032556,
+          938325,
+          3000000,
+          1000000
+        ],
+        "font": "Arial, 'Segoe UI', system-ui, sans-serif",
+        "size": "3.2cqh",
+        "weight": "700",
+        "color": "#20292e",
+        "shadow": "0 1px 2px rgba(255, 255, 255, 0.5)",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "Crece la mayor\ncantidad de neuronas",
+        "p": [
+          5672082,
+          1608506,
+          3000000,
+          1000000
+        ],
+        "font": "Arial, 'Segoe UI', system-ui, sans-serif",
+        "size": "3.2cqh",
+        "weight": "700",
+        "color": "#20292e",
+        "shadow": "0 1px 2px rgba(255, 255, 255, 0.5)",
+        "reveal": true,
+        "revealGroup": 1
+      },
+      {
+        "t": "1. Estimulación de excelencia\n2. Usar todo el cerebro",
+        "p": [
+          617847,
+          3202567,
+          3000000,
+          1000000
+        ],
+        "font": "Arial, 'Segoe UI', system-ui, sans-serif",
+        "size": "3.2cqh",
+        "weight": "700",
+        "color": "#20292e",
+        "shadow": "0 1px 2px rgba(255, 255, 255, 0.5)",
+        "reveal": true,
+        "revealGroup": 2
+      }
+    ]
+  },
+  {
+    "isRequisitos": true,
+    "bg": "image2_test.png",
+    "pattern": {
+      "img": "image23.png",
+      "p": [
+        2657906,
+        209788,
+        3891634,
+        1426102
+      ]
+    },
+    "cloud": {
+      "img": "image24.png",
+      "p": [
+        2190201,
+        -610882,
+        4627934,
+        2745223
+      ]
+    },
+    "title": {
+      "t": "REQUISITOS",
+      "p": [
+        3537847,
+        366816,
+        1960748,
+        760501
+      ]
+    },
+    "flynn": {
+      "img": "image21.png",
+      "p": [
+        6885788,
+        1002747,
+        2449180,
+        3200000
+      ]
+    },
+    "columns": [
+      {
+        "circle": {
+          "img": "image25.png",
+          "p": [
+            370082,
+            1562464,
+            2066370,
+            2807157
+          ]
+        },
+        "title": {
+          "t": "TIEMPO HORA",
+          "p": [
+            470082,
+            2759029,
+            1909633,
+            589502
+          ]
+        },
+        "banner": {
+          "img": "image26.png",
+          "p": [
+            209836,
+            4016005,
+            2527136,
+            1347928
+          ]
+        },
+        "desc": {
+          "t": "7 - 12 MESES\n3 VECES POR SEMANA",
+          "p": [
+            507514,
+            4379074,
+            1871164,
+            600001
+          ]
+        }
+      },
+      {
+        "circle": {
+          "img": "image25.png",
+          "p": [
+            2740570,
+            1706919,
+            1869573,
+            2673483
+          ]
+        },
+        "title": {
+          "t": "DECISIÓN CULTURAL\nY ECONÓMICA",
+          "p": [
+            2904381,
+            2572226,
+            1600000,
+            950000
+          ]
+        },
+        "banner": {
+          "img": "image26.png",
+          "p": [
+            2747674,
+            4097246,
+            1900004,
+            1222610
+          ]
+        },
+        "desc": {
+          "t": "APOYO FAMILIAR",
+          "p": [
+            2783476,
+            4207537,
+            1737698,
+            674021
+          ]
+        }
+      },
+      {
+        "circle": {
+          "img": "image25.png",
+          "p": [
+            5097674,
+            1562464,
+            1699998,
+            2947517
+          ]
+        },
+        "title": {
+          "t": "G.A.L.A",
+          "p": [
+            5167759,
+            2713196,
+            1600000,
+            600000
+          ],
+          "color": "#16b3c4",
+          "size": "3600"
+        },
+        "banner": {
+          "img": "image26.png",
+          "p": [
+            4689747,
+            4052108,
+            2508217,
+            1201396
+          ]
+        },
+        "desc": {
+          "t": "DECISIÓN INMEDIATA",
+          "p": [
+            5137832,
+            4288796,
+            1678866,
+            670650
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image27.png",
+    "texts": [
+      {
+        "t": "Lenguaje cómodo y entretenido",
+        "p": [
+          2225750,
+          4601974,
+          4776624,
+          685800
+        ],
+        "color": "#fff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "4.48cqh",
+        "shadow": "0px 2px 4px rgba(0,0,0,0.5)",
+        "weight": "800",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "FLYN",
+        "p": [
+          3764703,
+          -192847,
+          1828800,
+          685800
+        ],
+        "color": "#a43310",
+        "font": "'Baloo 2', sans-serif",
+        "size": "6cqh",
+        "weight": "800",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 1,
+    "bg": "image28.jpg",
+    "images": [
+      {
+        "img": "image29.png",
+        "p": [
+          4709556,
+          73602,
+          7168658,
+          5500002
+        ],
+        "reveal": true,
+        "revealGroup": 0,
+        "size": "5.22cqh"
+      }
+    ],
+    "texts": [
+      {
+        "t": "Values / Valores",
+        "p": [
+          463894,
+          4463659,
+          3830879,
+          685800
+        ],
+        "color": "#c00000",
+        "font": "'Baloo 2', sans-serif",
+        "size": "7.35cqh",
+        "weight": "800",
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image37.png",
+    "images": [
+      {
+        "img": "image38.png",
+        "p": [
+          500000,
+          1500000,
+          3500000,
+          3500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "img": "image49.png",
+        "p": [
+          4600000,
+          1000000,
+          3800000,
+          3500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 1: Amor",
+        "p": [
+          4559835,
+          277724,
+          3800000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5.5cqh",
+        "weight": "800",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "En este Modulo los niños aprenden a conocer su entorno y personas especiales a su alrededor como ser su núcleo familiar, el niño interactúa con juegos y dinámicas que le damos a conocer en el idioma inglés:\n\nConocer FLYN, aprender las partes de su cuerpo y cara como también a saber que es un niño especial y fantástico. El Proposito final es que se quiera y se valore a si mismo<div>\n<span style=\"font-weight: 800;\"><br></span></div>",
+        "p": [
+          4660240,
+          1331898,
+          3800000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "3.46cqh",
+        "align": "left",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image39.png",
+    "images": [
+      {
+        "img": "image40.png",
+        "p": [
+          200000,
+          1000000,
+          4000000,
+          4500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 2 : Amistad",
+        "p": [
+          5000000,
+          800000,
+          3500000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5cqh",
+        "weight": "800",
+        "bg": "#5a1344",
+        "radius": "4cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "Como su nombre lo dice, son actividades interactivas que normalmente tiene el niño con sus amigos, que son a esa edad en su gran mayoría juegos. Flynn  que es nuestro actor principal de la historia va a jugar con sus 5 amigos  más cercanos, de esa forma le enseñamos el alfabeto y nombres que el niño le sea fácil asociar todos los días.\n\nEjemplo: Todo asociado a saltar, correr, cantar, fiestas infantiles, animales o juegos de tecnología.",
+        "p": [
+          4500000,
+          1800000,
+          4300000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "3.2cqh",
+        "align": "left",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image41.png",
+    "images": [
+      {
+        "img": "image42.png",
+        "p": [
+          300000,
+          1000000,
+          3500000,
+          4500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 3 : Respeto",
+        "p": [
+          5000000,
+          800000,
+          3500000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5cqh",
+        "weight": "800",
+        "bg": "#ed811e",
+        "radius": "4cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "Este modulo muestra la importancia del respeto y conocer las diferentes labores que existen en el mundo como también que ellos aprendan a identificarlos para una correcta conversación\nEjemplo:\nMEDICO, POLICIA, CHEF, BOMBERO, PERIODISTA, ABOGADO, INGENIERO\nDistinguiendo con claridad los nombres y las diferencias de los trajes de estas profesiones.\n\nEl valor que logramos construir en este ambiente es el respetar a sus mayores, valorar el trabajo de sus padres y aprender a distinguir símbolos de autoridad.",
+        "p": [
+          4200000,
+          1800000,
+          4600000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "3.1cqh",
+        "align": "left",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image43.png",
+    "images": [
+      {
+        "img": "image33.png",
+        "p": [
+          500000,
+          1000000,
+          3500000,
+          4500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 4 : Solidaridad",
+        "p": [
+          5000000,
+          800000,
+          3500000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5cqh",
+        "weight": "800",
+        "bg": "#005a96",
+        "radius": "4cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "Existen aspectos en los niños que marcan su futuro e inicia por la solidaridad en casa, Flynn va a ser ejemplo de arreglar su cuarto, tender su cama, cuidar el jardín, reciclar, no dejar los juguetes tirados, ayudar a los más necesitados, cuidar el medio ambiente,\n\nEMBARAZADAS, DISCAPACITADOS, INVIDENTES\n\nSerán niños que tengan sensibilidad con el planeta y despierten ese liderazgo y vocación de ayudar.",
+        "p": [
+          4500000,
+          1800000,
+          4500000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "3cqh",
+        "align": "left",
+        "bg": "rgba(0, 30, 90, 0.45)",
+        "padding": "3cqh",
+        "radius": "2cqh",
+        "backdrop": "blur(5px)",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image43.png",
+    "images": [
+      {
+        "img": "image34.png",
+        "p": [
+          200000,
+          1000000,
+          4000000,
+          4500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 5 : Tolerancia",
+        "p": [
+          5000000,
+          800000,
+          3500000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5cqh",
+        "weight": "800",
+        "bg": "rgba(141, 62, 179, 0.7)",
+        "radius": "4cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "Como lo más seguro es que nuestros hijos se relacionen con personas de diferentes países y culturas, este ambiente lo hemos creado con el fin de ampliar sus habilidades de relaciones interpersonales con tolerancia y niños de Japón, Asia, Italia, Egipto etc.\n\nConociendo sobre la comida y cuentos relevantes para niños de esas culturas.\n\nAsí podrá por intermedio del ejemplo de FLYNN ser tolerante a niños con formas de ser distintas y cualidades físicas diferentes a las suyas.",
+        "p": [
+          4500000,
+          1800000,
+          4500000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "2.8cqh",
+        "align": "left",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image47.png",
+    "images": [
+      {
+        "img": "image35.png",
+        "p": [
+          200000,
+          1000000,
+          4000000,
+          4500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 6 : Honestidad",
+        "p": [
+          5000000,
+          800000,
+          3500000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5cqh",
+        "weight": "800",
+        "bg": "rgba(35, 60, 15, 0.7)",
+        "radius": "4cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "Buscar que los hijos digan la verdad desde niños y que sean amantes de los deportes, es un claro interés de cualquier papá moderno.\n\nAcá nos concentramos en que FLYNN les enseñe en varios ejemplos de la vida cotidiana a decir la verdad, le mostramos a los niños el equilibrio entre los deportes y que sepan controlar desde ya su atención a los videos juegos y redes sociales.\n\nAnclando el valor de la honestidad en las cosas pequeñas y en los retos futuros.",
+        "p": [
+          4800000,
+          1800000,
+          4000000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "2.8cqh",
+        "align": "left",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 2,
+    "bg": "image49.png",
+    "images": [
+      {
+        "img": "image36.png",
+        "p": [
+          200000,
+          1000000,
+          4000000,
+          4500000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "Libro 7 : Modales",
+        "p": [
+          5000000,
+          800000,
+          3500000,
+          800000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "5cqh",
+        "weight": "800",
+        "bg": "rgba(235, 120, 20, 0.7)",
+        "radius": "4cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "No hay cosa que haga sentir más orgulloso a un papá, que sus hijos tengan buenos modales. Por eso le hemos dado mucha relevancia a este ambiente.\n\nFLYNN va a representar varios momentos en clase, en la casa, de compras con la familia (comer, poner los pies en la mesa, hacer pataleta, pedir el favor, dar las gracias, conversaciones de los mayores)\n\nAl final de este ambiente el niño va a obtener las habilidades sociales en el idioma ingles que le permitan hablar con niños de su edad nativos.",
+        "p": [
+          4800000,
+          1800000,
+          4000000,
+          3500000
+        ],
+        "color": "#ffffff",
+        "font": "'Baloo 2', sans-serif",
+        "size": "2.8cqh",
+        "align": "left",
+        "bg": "rgba(180, 70, 10, 0.4)",
+        "padding": "3cqh",
+        "radius": "2cqh",
+        "backdrop": "blur(4px)",
+        "reveal": true,
+        "revealGroup": 1
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 6,
+    "bg": "#fc9c0c",
+    "images": [
+      {
+        "img": "image52.png",
+        "p": [
+          5396633,
+          -973082,
+          4126742,
+          3257790
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "img": "image53.png",
+        "p": [
+          223311,
+          78308,
+          1706188,
+          1260500
+        ],
+        "reveal": true,
+        "revealGroup": 1
+      },
+      {
+        "img": "image54.png",
+        "p": [
+          3090418,
+          3292744,
+          2418871,
+          2814203
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ],
+    "texts": [
+      {
+        "t": "<div style=\"font-family: 'Comic Sans MS', 'Pangolin', cursive; color: #ff0000; -webkit-text-stroke: 4px #ffffff; font-weight: 900; font-size: 1.5em; text-align: center; transform: rotate(-8deg); letter-spacing: 2px; line-height: 1.1; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; filter: drop-shadow(4px 4px 2px rgba(0,0,0,0.4)); padding: 0.1em; box-sizing: border-box;\">BIONIC CAMP<br>VIRTUAL</div>",
+        "p": [
+          1712954,
+          159103,
+          2940363,
+          1499999
+        ],
+        "size": "7cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "<div style=\"text-align:center; border: 0.2em solid #ea5c13; background: #d0e4ff; border-radius: 50%; width: 100%; height: 100%; display:flex; flex-direction:column; justify-content:center; padding: 1em; box-sizing: border-box;\"><span style=\"color:#f25822;font-weight:bold;font-size:1em\">FLYNN<br>MEETING</span><span style=\"font-size:0.6em;color:#000;font-weight:bold;\">Es la introducción del niño y sus padres en nuestro modelo educativo, reconociendo las necesidades y expectativas de ambos.</span></div>",
+        "p": [
+          130139,
+          1321150,
+          1849200,
+          2069624
+        ],
+        "size": "3.79cqh",
+        "reveal": true,
+        "revealGroup": 1
+      },
+      {
+        "t": "<div style=\"text-align:center; border: 0.2em solid #ea5c13; background: #ffe6cc; border-radius: 50%; width: 100%; height: 100%; display:flex; flex-direction:column; justify-content:center; padding: 1em; box-sizing: border-box;\"><span style=\"color:#e94326;font-weight:bold;font-size:1em\">IBOND</span><span style=\"font-size:0.6em;color:#666;font-weight:bold\">Donde le van a enseñar a manejar el material</span></div>",
+        "p": [
+          3441699,
+          1784057,
+          1395210,
+          1747613
+        ],
+        "size": "4.78cqh",
+        "reveal": true,
+        "revealGroup": 2
+      },
+      {
+        "t": "<div style=\"text-align:center; border: 0.2em solid #f18c21; background: #e3ccf0; border-radius: 50%; width: 100%; height: 100%; display:flex; flex-direction:column; justify-content:center; padding: 1em; box-sizing: border-box;\"><span style=\"color:#e94326;font-weight:bold;font-size:1em\">FUN SPOT</span><span style=\"font-size:0.6em;color:#666;font-weight:bold\">Asesorías personalizadas con el TALENT COACH donde le enseñan los temas. Virtuales</span></div>",
+        "p": [
+          5584090,
+          777270,
+          1792306,
+          2363130
+        ],
+        "size": "4.55cqh",
+        "reveal": true,
+        "revealGroup": 4
+      },
+      {
+        "t": "<div style=\"text-align:center; border: 0.2em solid #f18c21; background: #e5f0d3; border-radius: 50%; width: 100%; height: 100%; display:flex; flex-direction:column; justify-content:center; padding: 1em; box-sizing: border-box;\"><span style=\"color:#e94326;font-weight:bold;font-size:1em\">VALUES SHOW</span><span style=\"font-size:0.6em;color:#666;font-weight:bold\">Actividad al final, para demostrar habilidades obtenidas en el programa. Cantar, recitar</span></div>",
+        "p": [
+          7578654,
+          1861882,
+          1393811,
+          1814873
+        ],
+        "size": "3.41cqh",
+        "reveal": true,
+        "revealGroup": 5
+      },
+      {
+        "t": "<div style=\"text-align:center; border: 0.2em solid #f18c21; background: #ffe6cc; border-radius: 50%; width: 100%; height: 100%; display:flex; flex-direction:column; justify-content:center; padding: 1em; box-sizing: border-box;\"><span style=\"color:#e94326;font-weight:bold;font-size:1em\">H.A.V.A.</span><span style=\"font-size:0.6em;color:#666;font-weight:bold\">Evaluación que busca determinar el nivel de habilidades, avance y comprensión de los contenidos de cada libro</span></div>",
+        "p": [
+          4607106,
+          2889504,
+          1456173,
+          1900843
+        ],
+        "size": "3.23cqh",
+        "reveal": true,
+        "revealGroup": 3
+      },
+      {
+        "t": "<div style=\"text-align:center; background: #fce2a3; border-radius: 1em; padding: 0.3em 1em; box-shadow: 0 0.2em 0.2em rgba(0,0,0,0.2); width: 100%; height: 100%; box-sizing: border-box; display:flex; flex-direction:column; justify-content:center;\"><span style=\"color:#113b82; font-size:1em; font-weight:bold;\">HORARIOS<br>FIJOS</span><span style=\"color:red; font-size:1.3em; font-weight:bold\">3 veces<br>por semana</span><span style=\"color:#000; font-size:1em; font-weight:bold\">LUN - SAB</span></div>",
+        "p": [
+          2144965,
+          2333395,
+          1200424,
+          1019007
+        ],
+        "size": "2.03cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:1em; overflow:hidden; text-align:center; font-weight:bold; box-shadow: 0 0.2em 0.2em rgba(0,0,0,0.2); width: 100%; height: 100%; box-sizing: border-box; display:flex; flex-direction:column;\"><div style=\"background:#0a9ecb; color:white; padding:0.5em;\">MAÑANA L-V</div><div style=\"padding:0.5em; color:#333; display:flex; align-items:center; justify-content:center; flex:1;\">09:00 - 10:00<br>10:00 - 11:00</div></div>",
+        "p": [
+          302471,
+          3679716,
+          1500000,
+          1000000
+        ],
+        "size": "2.5cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:1em; overflow:hidden; text-align:center; font-weight:bold; box-shadow: 0 0.2em 0.2em rgba(0,0,0,0.2); width: 100%; height: 100%; box-sizing: border-box; display:flex; flex-direction:column;\"><div style=\"background:#0a9ecb; color:white; padding:0.5em;\">TARDE L-S</div><div style=\"padding:0.5em; color:#333; display:flex; align-items:center; justify-content:center; flex:1;\">15:00 - 16:00<br>16:00 - 17:00<br>17:00 - 18:00<br>18:00 - 19:00<br>19:00 - 20:00</div></div>",
+        "p": [
+          1915613,
+          3671582,
+          1343629,
+          1706059
+        ],
+        "size": "2.5cqh",
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "t": "<div style=\"color:#113b82; font-weight:bold; font-size:1em; text-align:right;\"><span style=\"font-size:1.6em\">7</span> MESES DE ASESORIA<br><span style=\"font-size:1.6em\">+5</span> MESES DE<br>PRACTICA<br><span style=\"color:red;font-size:1.3em\">Total <span style=\"font-size:2em\">12</span> meses</span></div>",
+        "p": [
+          6500003,
+          4256119,
+          2500000,
+          1000000
+        ],
+        "size": "3cqh",
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 1,
+    "bg": "#fcc80d",
+    "images": [
+      {
+        "img": "image29.png",
+        "p": [
+          772542,
+          199313,
+          7860502,
+          5500002
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "img": "image27.png",
+        "p": [
+          4198768,
+          72915,
+          4477533,
+          2835000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "img": "image57.png",
+        "p": [
+          4205454,
+          2909029,
+          4488744,
+          2835000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      }
+    ]
+  },
+  {
+    "isCustom": true,
+    "revealCount": 36,
+    "bg": "#fcc80d",
+    "images": [
+      {
+        "img": "image62.png",
+        "p": [
+          3600000,
+          100000,
+          1900000,
+          1000000
+        ],
+        "reveal": true,
+        "revealGroup": 0
+      },
+      {
+        "img": "image60.jpg",
+        "p": [
+          2800000,
+          1500000,
+          3600000,
+          4000000
+        ],
+        "reveal": true,
+        "revealGroup": 20,
+        "hideGroup": 21
+      }
+    ],
+    "texts": [
+      {
+        "t": "<div style=\"background:#1ba5c6; color:white; text-align:center; box-shadow: inset 0 2px 4px rgba(255,255,255,0.4), 0 4px 6px rgba(0,0,0,0.2); font-weight: bold; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Baloo 2', sans-serif; font-size: 1.2em; letter-spacing: 1px;\">ACADÉMICA</div>",
+        "p": [
+          400000,
+          1000000,
+          2000000,
+          500000
+        ],
+        "size": "3.5cqh",
+        "reveal": true,
+        "revealGroup": 1
+      },
+      {
+        "t": "<div style=\"background:#1ba5c6; color:white; text-align:center; box-shadow: inset 0 2px 4px rgba(255,255,255,0.4), 0 4px 6px rgba(0,0,0,0.2); font-weight: bold; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Baloo 2', sans-serif; font-size: 1.2em; letter-spacing: 1px;\">MATERIAL</div>",
+        "p": [
+          6700000,
+          1000000,
+          2000000,
+          500000
+        ],
+        "size": "3.5cqh",
+        "reveal": true,
+        "revealGroup": 8
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.8em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; color: #333; line-height: 1.2;\">7 meses de aprendizaje<br>Bionic Camp</div>",
+        "p": [
+          200000,
+          1700001,
+          2400000,
+          600000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 2
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.8em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; color: #333; line-height: 1.2;\">5 meses de practicas<br>(Activate, Value, fun spot)</div>",
+        "p": [
+          200000,
+          2400003,
+          2400000,
+          600000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 3
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.8em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; color: #333; line-height: 1.2;\">12 meses de programa<br>(Horario pre establecido)</div>",
+        "p": [
+          200000,
+          3100000,
+          2400000,
+          600000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 4
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.8em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; color: #333; line-height: 1.2;\">Actividades Lúdicas en<br>tiempo real</div>",
+        "p": [
+          200000,
+          3800001,
+          2400000,
+          600000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 5
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.8em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; color: #333; line-height: 1.2;\">Prácticas Online con Talent<br>Coach en vivo y tiempo real</div>",
+        "p": [
+          200000,
+          4500000,
+          2400000,
+          600000
+        ],
+        "size": "2.5cqh",
+        "reveal": true,
+        "revealGroup": 6
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.8em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; color: #333; line-height: 1.2;\">Certificado<br>De graduación</div>",
+        "p": [
+          200000,
+          5200000,
+          2400000,
+          600000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 7
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.5em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; font-weight: 800; color: #333; line-height: 1.2;\">7 VALUES BOOKS</div>",
+        "p": [
+          6600000,
+          1600000,
+          2200000,
+          300000
+        ],
+        "size": "2.4cqh",
+        "reveal": true,
+        "revealGroup": 9
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.5em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; font-weight: 500; color: #333; line-height: 1.2;\">Love/Amor</div>",
+        "p": [
+          6600000,
+          1950000,
+          2200000,
+          300000
+        ],
+        "size": "2.4cqh",
+        "reveal": true,
+        "revealGroup": 10
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.5em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; font-weight: 500; color: #333; line-height: 1.2;\">Friendship/Amistad</div>",
+        "p": [
+          6600000,
+          2300000,
+          2200000,
+          300000
+        ],
+        "size": "2.4cqh",
+        "reveal": true,
+        "revealGroup": 11
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.5em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; font-weight: 500; color: #333; line-height: 1.2;\">Respect/Respeto</div>",
+        "p": [
+          6600000,
+          2650000,
+          2200000,
+          300000
+        ],
+        "size": "2.4cqh",
+        "reveal": true,
+        "revealGroup": 12
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.5em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; font-weight: 500; color: #333; line-height: 1.2;\">Solidarity/Solidaridad</div>",
+        "p": [
+          6600000,
+          3000000,
+          2200000,
+          300000
+        ],
+        "size": "2.4cqh",
+        "reveal": true,
+        "revealGroup": 13
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.5em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; font-weight: 500; color: #333; line-height: 1.2;\">Tolerance/Tolerancia</div>",
+        "p": [
+          6600000,
+          3350000,
+          2200000,
+          300000
+        ],
+        "size": "2.4cqh",
+        "reveal": true,
+        "revealGroup": 14
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.5em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; font-weight: 500; color: #333; line-height: 1.2;\">Honesty/Honestidad</div>",
+        "p": [
+          6600000,
+          3700000,
+          2200000,
+          300000
+        ],
+        "size": "2.4cqh",
+        "reveal": true,
+        "revealGroup": 15
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.5em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; font-weight: 500; color: #333; line-height: 1.2;\">Manners/Modales</div>",
+        "p": [
+          6600000,
+          4050000,
+          2200000,
+          300000
+        ],
+        "size": "2.4cqh",
+        "reveal": true,
+        "revealGroup": 16
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.5em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; font-weight: 800; color: #333; line-height: 1.2;\">7 ACTIVATE BOOKS</div>",
+        "p": [
+          6600000,
+          4400000,
+          2200000,
+          300000
+        ],
+        "size": "2.4cqh",
+        "reveal": true,
+        "revealGroup": 17
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.5em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; font-weight: 800; color: #333; line-height: 1.2;\">1 MOCHILA</div>",
+        "p": [
+          6600000,
+          4750000,
+          2200000,
+          300000
+        ],
+        "size": "2.4cqh",
+        "reveal": true,
+        "revealGroup": 18
+      },
+      {
+        "t": "<div style=\"background:white; border-radius:0.5em; padding: 0.2em; text-align:center; box-shadow: 0 0.2em 0.3em rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; font-family: 'Comic Sans MS', 'Pangolin', cursive; font-weight: 800; color: #333; line-height: 1.2;\">1 USER INSTRUCTIONS DIGITAL</div>",
+        "p": [
+          6615844,
+          5090966,
+          2123630,
+          300000
+        ],
+        "size": "2.1cqh",
+        "reveal": true,
+        "revealGroup": 19
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:800; box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.2);\">18.000 Bs</div>",
+        "p": [
+          1336753,
+          293768,
+          1500000,
+          600000
+        ],
+        "size": "6.51cqh",
+        "reveal": true,
+        "revealGroup": 22
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:900; box-shadow: 0 0.2em 0.4em rgba(0,0,0,0.3);\">36.000 Bs</div>",
+        "p": [
+          3430457,
+          1161140,
+          2043108,
+          733257
+        ],
+        "size": "10.21cqh",
+        "reveal": true,
+        "revealGroup": 21
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:800; box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.2);\">18.000 Bs</div>",
+        "p": [
+          5548903,
+          1971541,
+          1018870,
+          361000
+        ],
+        "size": "3.21cqh",
+        "reveal": true,
+        "revealGroup": 23
+      },
+      {
+        "t": "<svg viewBox=\"0 0 100 100\" preserveAspectRatio=\"none\" style=\"width:100%; height:100%; filter: drop-shadow(0.1em 0.2em 0.2em rgba(0,0,0,0.5));\"><line x1=\"0\" y1=\"20\" x2=\"100\" y2=\"80\" stroke=\"#e60000\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"0\" y1=\"80\" x2=\"100\" y2=\"20\" stroke=\"#e60000\" stroke-width=\"8\" stroke-linecap=\"round\"/></svg>",
+        "p": [
+          1336753,
+          293768,
+          1500000,
+          600000
+        ],
+        "reveal": true,
+        "revealGroup": 25
+      },
+      {
+        "t": "<svg viewBox=\"0 0 100 100\" preserveAspectRatio=\"none\" style=\"width:100%; height:100%; filter: drop-shadow(0.1em 0.2em 0.2em rgba(0,0,0,0.5));\"><line x1=\"0\" y1=\"20\" x2=\"100\" y2=\"80\" stroke=\"#e60000\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"0\" y1=\"80\" x2=\"100\" y2=\"20\" stroke=\"#e60000\" stroke-width=\"4\" stroke-linecap=\"round\"/></svg>",
+        "p": [
+          3363938,
+          833366,
+          2145256,
+          1448255
+        ],
+        "reveal": true,
+        "revealGroup": 24
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; border-radius:0.5em; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:600; box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.2);\">CORTO</div>",
+        "p": [
+          3714205,
+          2743770,
+          945380,
+          500000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 26
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; border-radius:0.5em; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:600; box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.2);\">14,000</div>",
+        "p": [
+          4999180,
+          2680572,
+          620853,
+          500000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 35
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; border-radius:0.5em; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:600; box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.2);\">4400</div>",
+        "p": [
+          2801228,
+          3445825,
+          800000,
+          500000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 31
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; border-radius:0.5em; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:600; box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.2);\">MEDIANO</div>",
+        "p": [
+          3700824,
+          3436797,
+          995132,
+          500000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 27
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; border-radius:0.5em; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:600; box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.2);\">6</div>",
+        "p": [
+          4791666,
+          3427771,
+          400000,
+          500000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 29
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; border-radius:0.5em; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:600; box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.2);\">2100</div>",
+        "p": [
+          5371587,
+          3445827,
+          800000,
+          500000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 32
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; border-radius:0.5em; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:600; box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.2);\">4000</div>",
+        "p": [
+          2807921,
+          4111780,
+          800000,
+          500000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 33
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; border-radius:0.5em; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:600; box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.2);\">LARGO</div>",
+        "p": [
+          3700826,
+          4129837,
+          990167,
+          500000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 28
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; border-radius:0.5em; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:600; box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.2);\">8</div>",
+        "p": [
+          4831831,
+          4120808,
+          400000,
+          500000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 30
+      },
+      {
+        "t": "<div style=\"background:white; border:0.1em solid #fc5c65; border-radius:0.5em; font-family:'Baloo 2', sans-serif; color:#000; display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:100%; height:100%; font-weight:600; box-shadow: 0 0.1em 0.2em rgba(0,0,0,0.2);\">1700</div>",
+        "p": [
+          5371587,
+          4102751,
+          800000,
+          500000
+        ],
+        "size": "2.8cqh",
+        "reveal": true,
+        "revealGroup": 34
+      }
+    ]
+  }
+]

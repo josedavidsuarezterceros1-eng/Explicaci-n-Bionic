@@ -40,3 +40,47 @@ Para hacer un commit, abre la terminal y ejecuta:
 git add .
 git commit -m "Descripción breve y clara de los cambios que hiciste"
 ```
+
+---
+
+## 🤖 Guía de Uso del Asistente de IA
+
+> **INSTRUCCIÓN OBLIGATORIA:** Al iniciar cualquier conversación sobre este proyecto, la IA debe presentarse indicando:
+> 1. Qué modelo está usando.
+> 2. Qué nivel de esfuerzo (effort) tiene configurado.
+> 3. Recomendar si es adecuado para la tarea o si debería cambiarse.
+
+### 🧠 Selección de Modelo según el Requerimiento
+
+| Tipo de Tarea | Modelo Recomendado | Esfuerzo (Effort) | Ejemplos |
+|---|---|---|---|
+| **Simple** (consultas rápidas, correcciones menores) | Haiku / Gemini Flash | Bajo (`low`) | Corregir un typo, preguntar qué hace una línea de código, renombrar una variable. |
+| **Medio** (desarrollo moderado, debugging) | Sonnet / Gemini Pro | Medio (`medium`) | Agregar una nueva diapositiva, ajustar estilos CSS, corregir un bug de navegación. |
+| **Complejo** (refactorización, diseño nuevo, múltiples archivos) | Opus / Gemini Ultra | Alto (`high`) | Rediseñar el sistema de slides, agregar funcionalidades completas nuevas, migrar tecnología. |
+
+### ⚡ Niveles de Esfuerzo (Effort)
+
+- **`low`** → Respuestas directas y concisas. Ideal para preguntas simples o cambios de una línea.
+- **`medium`** → Balance entre profundidad y velocidad. Para tareas de desarrollo estándar.
+- **`high`** → Análisis profundo y completo. Para tareas complejas que requieren planificación.
+
+### 🔄 Cuándo Cambiar a un Chat Nuevo
+
+> **⚠️ ALERTA DE CONTEXTO:** La IA debe monitorear el tamaño del contexto de la conversación y avisar al usuario cuando sea recomendable iniciar un chat nuevo.
+
+**Señales de que debes abrir un nuevo chat:**
+- 🔴 La conversación lleva **más de 15-20 intercambios** sobre temas diferentes.
+- 🔴 La IA empieza a **repetir información** o a **"olvidar"** instrucciones anteriores.
+- 🔴 Se han tratado **múltiples temas no relacionados** en el mismo chat.
+- 🔴 Los archivos de código analizados superan las **500 líneas** acumuladas en contexto.
+- 🟡 Si completaste una tarea y vas a empezar una **tarea completamente diferente**.
+
+**¿Por qué importa?**
+Cada mensaje en un chat consume tokens (el "combustible" de la IA). Mientras más largo el historial de la conversación, más tokens se gastan en cada respuesta — incluso para preguntas simples. Abrir un chat nuevo **reinicia el contador** y hace que las respuestas sean más rápidas, precisas y económicas.
+
+**Formato sugerido para el aviso de la IA:**
+```
+💡 Aviso de contexto: Esta conversación ya tiene bastante historial acumulado.
+   Te recomiendo abrir un chat nuevo para tu próxima tarea.
+   Así ahorras tokens y obtienes respuestas más precisas.
+```
